@@ -18,6 +18,7 @@
 package state
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"maps"
