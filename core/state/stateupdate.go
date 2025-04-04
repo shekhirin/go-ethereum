@@ -17,6 +17,7 @@
 package state
 
 import (
+	"encoding/json"
 	"maps"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -161,6 +162,18 @@ func newStateUpdate(rawStorageKey bool, originRoot common.Hash, root common.Hash
 			}
 		}
 	}
+
+	jsonBytes, err := json.Marshal(accounts)
+	if err != nil {
+		return nil, err
+	}
+	log.Info(string(jsonBytes))
+	jsonBytes, err = json.Marshal(storages)
+	if err != nil {
+		return nil, err
+	}
+	log.Info(string(jsonBytes))
+
 	return &stateUpdate{
 		originRoot:     originRoot,
 		root:           root,
