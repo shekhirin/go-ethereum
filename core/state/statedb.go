@@ -1265,6 +1265,12 @@ func (s *StateDB) commitAndFlush(block uint64, deleteEmptyObjects bool, noStorag
 	if err != nil {
 		return nil, err
 	}
+	jsonBytes, err := json.Marshal(ret)
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println(string(jsonBytes))
+
 	// Commit dirty contract code if any exists
 	if db := s.db.TrieDB().Disk(); db != nil && len(ret.codes) > 0 {
 		batch := db.NewBatch()
