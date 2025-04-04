@@ -166,12 +166,12 @@ func newStateUpdate(rawStorageKey bool, originRoot common.Hash, root common.Hash
 
 	jsonBytes, err := json.Marshal(accounts)
 	if err != nil {
-		return nil, err
+		return nil
 	}
 	log.Info(string(jsonBytes))
 	jsonBytes, err = json.Marshal(storages)
 	if err != nil {
-		return nil, err
+		return nil
 	}
 	log.Info(string(jsonBytes))
 
